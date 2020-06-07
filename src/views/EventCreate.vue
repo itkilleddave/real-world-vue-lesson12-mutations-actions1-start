@@ -4,7 +4,7 @@
     <form>
       <label>Select a category</label>
       <select v-model="event.category">
-        <!-- <option v-for="cat in categories" :key="cat">{{ cat }}</option> -->
+        <option v-for="cat in categories" :key="cat">{{ cat }}</option>
       </select>
       <h3>Name & describe your event</h3>
       <div class="field">
@@ -28,7 +28,7 @@
       <div class="field">
         <label>Select a time</label>
         <select v-model="event.time">
-          <!-- <option v-for="time in times" :key="time">{{ time }}</option> -->
+          <option v-for="time in times" :key="time">{{ time }}</option>
         </select>
       </div>
       <input type="submit" class="button -fill-gradient" value="Submit"/>
@@ -42,26 +42,13 @@ import Datepicker from 'vuejs-datepicker';
 
 export default {
   data() {
+    const times = []
+    for (let i=1; i<24; i++) {
+      times.push(i+':00')
+    }
     return {
-      event: {
-        title: "Park Cleanup",
-        date: "Nov 12 2018",
-        time: "12:00",
-        location: "132 N Magnolia Street, Orlando, Florida",
-        description: "We're going to clean up this park.",
-        organizer: "Adam Jahr",
-        category: "nature",
-        attendees: [
-          // {
-          //   id: "ghi789",
-          //   name: "Beth Swanson"
-          // },
-          // {
-          //   id: "jkl101",
-          //   name: "Mary Gordon"
-          // }
-        ]
-      }
+      times,
+      event: this.createFreshEventObject()
     }
   },
   components: {
@@ -70,7 +57,26 @@ export default {
   computed: {
     ...mapGetters(['getEventById']),
     ...mapState(['user', 'categories'])
-  }
+  },
+  methods: {
+    createFreshEventObject() {
+      const user = this.user
+      const id = Math.floor(Math.random() * 10000000)
+
+      return {
+        id,
+        user,
+        title: '',
+        date: '',
+        time: '',
+        location: '',
+        description: '',
+        organizer: '',
+        category: '',
+        attendees: []
+      }
+    }
+  },
 }
 </script>
 
