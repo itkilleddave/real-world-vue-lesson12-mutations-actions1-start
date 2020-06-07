@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h1>Create an Event, {{ user.name }}</h1>
+    <h1>Create an Event, {{ user.user.name }}</h1>
     <form @submit.prevent="createEvent">
       <label>Select a category</label>
       <select v-model="event.category">

@@ -1,7 +1,7 @@
 <template>
   <div>
-    <h1>Events Listing</h1>
-    <EventCard v-for="event in events" :key="event.id" :event="event"/>
+    <h1>Events for {{ user.user.name }}</h1>
+    <EventCard v-for="event in event.events" :key="event.id" :event="event"/>
     <template v-if="!isFirstPage">
       <router-link :to="{ name: 'event-list', query: {page: page - 1}}" rel="prev">Prev Page</router-link>
     </template>
@@ -38,13 +38,15 @@ export default {
       return parseInt(this.$route.query.page) || 1
     },
     isLastPage() {
-      return Math.ceil(this.getTotalEvents / this.perPage) > this.page ? false : true
+      return Math.ceil(this.event.getTotalEvents / this.perPage) > this.page ? false : true
     },
     isFirstPage() {
       return this.page == 1 ? true : false
     },
-    ...mapState(['events']),
-    ...mapGetters(['getTotalEvents'])
+    // ...mapState(['event', 'eventsTotal', 'user']),
+    ...mapGetters(['getTotalEvents']),
+    ...mapState(['event', 'user'])
+    //...mapGetters(['event'])
   }
 }
 </script>

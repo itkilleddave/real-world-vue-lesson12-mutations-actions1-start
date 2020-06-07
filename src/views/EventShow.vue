@@ -41,7 +41,9 @@ export default {
     })
   },
   computed: {
-    ...mapState(['event']),
+    ...mapState({
+      event: state => state.event.event
+    }),
     ...mapGetters(['getEventById'])
   }
   
