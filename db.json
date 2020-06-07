@@ -104,6 +104,28 @@
       "organizer": "",
       "category": "nature",
       "attendees": []
+    },
+    {
+      "id": 2937363,
+      "title": "Some ol' thang",
+      "date": "",
+      "time": "",
+      "location": "",
+      "description": "",
+      "organizer": "",
+      "category": "nature",
+      "attendees": []
+    },
+    {
+      "id": 4711124,
+      "title": "grub",
+      "date": "",
+      "time": "",
+      "location": "",
+      "description": "",
+      "organizer": "",
+      "category": "food",
+      "attendees": []
     }
   ]
 }
