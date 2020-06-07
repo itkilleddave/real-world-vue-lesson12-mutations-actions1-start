@@ -60,7 +60,7 @@ export default {
   },
   methods: {
     createEvent() {
-      return this.$store.dispatch('createEvent', this.event)
+      return this.$store.dispatch('event/createEvent', this.event)
       .then(() => {
         this.$router.push({
           name: 'event-show',
