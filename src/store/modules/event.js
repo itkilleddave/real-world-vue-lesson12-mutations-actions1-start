@@ -25,7 +25,7 @@ export const actions = {
     createEvent({commit}, event) {
         return EventService.postEvent(event)
         .then(() => {
-        commit('ADD_EVENT', event)
+            commit('ADD_EVENT', event)
         })
     },
     fetchEvents({commit}, {perPage, page}) {
@@ -42,15 +42,15 @@ export const actions = {
     fetchEvent({commit, getters}, {id}) {
         var event = getters.getEventById(id)
         if (event) {
-        commit('SET_EVENT', event)
+            commit('SET_EVENT', event)
         } else {
-        EventService.getEvent(id)
-        .then(response => {
-            commit('SET_EVENT', response.data)
-        })
-        .catch(error => {
-            console.log('There was an error:', error.response)
-        })
+            EventService.getEvent(id)
+            .then(response => {
+                commit('SET_EVENT', response.data)
+            })
+            .catch(error => {
+                console.log('There was an error:', error.response)
+            })
         }
     }
 }
